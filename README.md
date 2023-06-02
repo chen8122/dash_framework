@@ -2,11 +2,13 @@
 1. **`applayout.py`**: recycle the app layout 
 Typical dash flow：   
 - Dash definition `app = Dash(__name__)` 
-- Design layout: app.layout 
-- Connect to server and run: `if __name__ == '__main__': app.run_server(host='0.0.0.0', debug=True)`  
+- Design layout: `app.layout`
+- Connect to server and run:  
+  `if __name__ == '__main__':   
+    app.run_server(host='0.0.0.0', debug=True)`  
 
 My project:  
-- `class SingleGraphLayout(Dash)` and `class MultipleGraphLayout(Dash)` in `applayout.py` are **custom classes** that define two `__Dash__` application objects. They inherit functionality of `__Dash__` class. The `super().__init__(__name__)` statement calls the `__init__` method of the parent class __Dash__ and passes the `__name__` parameter to the `__init__` method.  
+- **`class SingleGraphLayout(Dash)`** and **`class MultipleGraphLayout(Dash)`** in `applayout.py` are **custom classes** that define two `__Dash__` application objects. They inherit functionality of `__Dash__` class. The `super().__init__(__name__)` statement calls the `__init__` method of the parent class __Dash__ and passes the `__name__` parameter to the `__init__` method.  
 - `SingleGraphLayout.layout = html.Div([dcc.RangeSlider(id=input_id,...),  
                                         dcc.Graph(id=output_id,...)])`  
    `MultipleGraphLayout.layout = html.Div([dcc.RangeSlider(id=input_id,...),  
