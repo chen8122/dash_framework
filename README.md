@@ -1,5 +1,5 @@
 # dash_framework
-1. **`applayout.py`**: recycle the app layout 
+1. **`applayout.py`**: recycle the app layout   
 Typical dash flow：   
 - Dash definition `app = Dash(__name__)` 
 - Design layout: `app.layout`
