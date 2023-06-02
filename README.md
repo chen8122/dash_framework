@@ -1,6 +1,9 @@
 # dash_framework
-1. **`applayout.py`**: recycle the app layout
-     
+1. **`enrivn.py`**: report reading  
+
+2. **`pnl.py`**(date slider), **`risk_style.py`**(date slider), and **`risk_all`**(date slider and 4 tabs): 3 usage scenarios  
+
+4. **`applayout.py`**: recycle the app layout       
 Typical dash flow：   
 - Dash definition `app = Dash(__name__)` 
 - Design layout: `app.layout`
@@ -17,10 +20,13 @@ My project:
                                           dcc.Tab(label=oid, value=oid, children=[dcc.Graph(id=oid for oid in output_ids]])`  
 - Connect to server and run in the end of main code
 
-2. **`fig_config.py`**: recycle the figure configuration - line&shade subplots, create slider markers, transform slider markers to exact dates, align y axes, etc.
-'def plots() --> Dash` collect the input from slider, and pass the sliced data to 'def main_plots() --> go.Figure' which return 
-return the Dash object app
+4. **`fig_config.py`**: recycle the figure configuration - line&shade subplots, create slider markers, transform slider markers to exact dates, align y axes, etc.  
+- **`def plots() --> Dash`** collects the input from slider, and pass the sliced data to **'def main_plots() --> go.Figure'** which return a figure as  `@app.callback()`'s output, finally return a Dash app. For example:     
+     **`risk_style.py`** passed a dictionary of 20 (1910,2)dataframes  
+     app.layout.children = {list:2} RangerSlider+Graph    
+     **`risk_all`** passed a dictionary of 20 (1910,2)dataframes 4 times; each time trigger `@app.callback()` and output a figure whose output_id matches `app.layout`. When finish the iteration, app collects 4 figures and show on the server.  
+     `app.layout.children = {list:2}` --> RangerSlider+Tab; `Tab.children = {list:1}` --> Graph
 
-3. **`enrivn.py`**: report reading  
 
-4. **`pnl.py`**(date slider), **`risk_style.py`**(date slider), and **`risk_all`**(date slider and 4 tabs): 3 usage scenarios
+
+
