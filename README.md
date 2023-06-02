@@ -14,8 +14,10 @@ My project:
                                           dcc.Tab(label=oid, value=oid, children=[dcc.Graph(id=oid for oid in output_ids]])`  
 - Connect to server and run in the end of main code
 
-## 2. `fig_config.py`: recycle the figure configuration - line&shade subplots, create slider markers, transform slider markers to exact dates, align y axes, etc.
+2. **`fig_config.py`**: recycle the figure configuration - line&shade subplots, create slider markers, transform slider markers to exact dates, align y axes, etc.
 'def plots() --> Dash` collect the input from slider, and pass the sliced data to 'def main_plots() --> go.Figure' which return 
 return the Dash object app
 
-## 3. File reading and dataframe preparation are stored seperately. We have 3 usage scenarios: pnl(date slider), risk_style(date slider), and risk_factors(date slider and 4 tabs)
+3. **`enrivn.py`**: report reading  
+
+4. **`pnl.py`**(date slider), **`risk_style.py`**(date slider), and **`risk_all`**(date slider and 4 tabs): 3 usage scenarios
