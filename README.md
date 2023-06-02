@@ -7,18 +7,16 @@
 Typical dash flow：   
 - Dash definition `app = Dash(__name__)` 
 - Design layout: `app.layout`
-- Connect to server and run:  
-  `if __name__ == '__main__':   
+- Connect to server and run:    
+  `if __name__ == '__main__':     
     app.run_server(host='0.0.0.0', debug=True)`  
 
 My project:  
 -  Dash definition: **`class SingleGraphLayout(Dash)`** and **`class MultipleGraphLayout(Dash)`** in `applayout.py` are **custom classes** that define two `__Dash__` application objects. They inherit functionality of `__Dash__` class. The `super().__init__(__name__)` statement calls the `__init__` method of the parent class __Dash__ and passes the `__name__` parameter to the `__init__` method.  
 
-`class Layout(Dash):  
-
-    def __init__(self, **kwargs):      
-    
-        super().__init__(__name__)`  
+`class Layout(Dash):    
+    def __init__(self, **kwargs):  
+      super().__init__(__name__)`  
         
 - Design layout:  
   `SingleGraphLayout.layout = html.Div([dcc.RangeSlider(id=input_id,...),  
