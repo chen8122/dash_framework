@@ -34,6 +34,3 @@ My project:
      nested app layout: {list:2} RangerSlider+Tab --> Tab.children = {list:1}` --> Graph
 
 
-
-![image](https://github.com/chen8122/dash_framework/assets/9794705/3254c7b7-d4d1-4840-9bc2-8944e788f1f1)
-
