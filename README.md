@@ -3,7 +3,7 @@
 
 2. **`pnl.py`**(date slider), **`risk_style.py`**(date slider), and **`risk_all`**(date slider and 4 tabs): to offer 3 usage scenarios  
 
-4. **`applayout.py`**: to recycle the app layout       
+3. **`applayout.py`**: to recycle the app layout       
 Typical dash flow：   
 - Dash definition `app = Dash(__name__)` 
 - Design layout: `app.layout`
