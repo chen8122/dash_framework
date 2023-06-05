@@ -5,9 +5,12 @@ This project aims to create **interactive dashboards for the front-end business 
 Through extensive exploration within the data analysis community, I discovered that Dash Plotly, an open-source Python library, presented a viable alternative for building interactive dashboards in the form of web applications.  Leveraging the power of code-based development, as opposed to relying on commercial software, offered notable advantages. Firstly, it proved to be more cost-effective. Additionally, Dash Plotly provided a unified platform where front-end quantitative analysts could access data and effortlessly invoke plotting code without requiring additional training in Tableau or Power BI. Moreover, the codebase could be refactored to accommodate new data sources, enhancing the platform's versatility.  
 
 ## My Responsibility
-The first stage of my work involved designing the **layout of the app**, which included dual Y-axes for multiple line graphs and shaded area chart. Users can select their desired date range by adjusting a slider. 
+The first stage of my work involved designing the **layout of the app**, which included dual Y-axes for multiple line graphs and shaded area chart. Users can select their desired date range by adjusting a slider.  
+
 In the second stage, I studied the documentation of Plotly to understand its plotting routines and how to use the **@callback decorator** to capture the user-selected time interval as real-time input. This input triggers the plotting function, which then runs the server to display the graphs in real-time on the web page.  
+
 Next, I focused on extracting the common elements of graph configuation, such as plotting line graphs and shaded area charts based on input dataframes, dividing subplots, aligning dual Y-axes, and formatting the images.  
+
 Finally, I expanded the creation of single-page interactive dashboards to include multi-tab dashboards with multiple data sources.  
 
 ## Dash Code Framework
