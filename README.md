@@ -19,40 +19,32 @@ Finally, I expanded the creation of single-page interactive dashboards to includ
 2. **`pnl.py`**(date slider), **`risk_style.py`**(date slider), and **`risk_all`**(date slider and 4 tabs): to offer 3 usage scenarios  
 
 3. **`applayout.py`**: to recycle the app layout       
-Typical dash flow：   
-- Dash definition `app = Dash(__name__)` 
-- Design layout: `app.layout`
-- Connect to server and run:    
-  `if __name__ == '__main__':      
-    app.run_server(host='0.0.0.0', debug=True)`  
-
-My project:  
--  Dash definition: **`class SingleGraphLayout(Dash)`** and **`class MultipleGraphLayout(Dash)`** in `applayout.py` are **custom classes** that define two `__Dash__` application objects. They inherit functionality of `__Dash__` class. The `super().__init__(__name__)` statement calls the `__init__` method of the parent class __Dash__ and passes the `__name__` parameter to the `__init__` method.  
+-  Dash definition: **`class SingleLayout(Dash)`** and **`class MultipleLayout(Dash)`** in `applayout.py` are **custom classes** that define two `__Dash__` application objects. They inherit functionality of `__Dash__` class. 
 
 `class Layout(Dash):  
     def __init__(self, **kwargs):        
       super().__init__(__name__)`  
         
 - Design layout:  
-  `SingleGraphLayout.layout = html.Div([dcc.RangeSlider(id=input_id,...),  
+  `SingleLayout.layout = html.Div([dcc.RangeSlider(id=input_id,...),  
                                         dcc.Graph(id=output_id,...)])`  
-  `MultipleGraphLayout.layout = html.Div([dcc.RangeSlider(id=input_id,...),  
+  `MultipleLayout.layout = html.Div([dcc.RangeSlider(id=input_id,...),  
                                           dcc.Tabs(id='Tabs', ..., children=[                                            
                                           dcc.Tab(label=oid, value=oid, children=[dcc.Graph(id=oid for oid in output_ids]])`  
 - Connect to server and run in the end of main code
 
 4. **`fig_config.py`**: to recycle shared figure configuration - line&shade subplots, create slider markers, transform slider markers to exact dates, align y axes, etc.  
 **`def plots() --> Dash`** collects the input from slider, and pass the sliced data to **`def main_plots() --> go.Figure`** which return a figure as  `@app.callback()`'s output, finally return a Dash app. For example:     
-     Scenario1: **`risk_style.py`** passed a dictionary of 20 (1910,2)dataframes  
+     Scenario1: **`risk_style.py`** passed a dictionary of dataframes  
      app layout: {list:2} RangerSlider+Graph    
-     Scenario2: **`risk_all`** passed dictionary of 20 (1910,2)dataframes 4 times; each time trigger `@app.callback()` and output a figure whose output_id matches the ones in `app.layout`. When finish the iteration, app collects 4 figures and show on the server end.  
+     Scenario2: **`risk_all`** passed dictionary of dataframes 4 times; each time trigger `@app.callback()` and output a figure whose output_id matches the ones in `app.layout`. When finish the iteration, app collects 4 figures and show on the server end.  
      nested app layout: {list:2} RangerSlider+Tab --> Tab.children = {list:1}` --> Graph
 
 ## Chanllenges  
 The project's primary challenge lay in abstracting reusable plotting modules. Three specific obstacles were encountered during this process:  
 -  Determining the optimal input data format proved crucial, as it set the foundation for subsequent code implementation. Initial attempts involved representing different data formats using an MxN array of dataframes; however, this approach was ultimately refined to employ a nested dictionary structure—a dictionary of two dictionaries of dataframes.  
 -  Abstracting the single-graph layout without tabs and the multi-graph layout with tabs required the creation of distinct classes inheriting from Dash objects, facilitating the assignment of different app layouts. This design approach effectively enabled the reuse of extracted single-graph plotting modules.  
--  Maintaining meticulous version control using Git emerged as a critical consideration. Given the low tolerance for errors within the company's front-end business operations, each commit necessitated clear and well-defined task modifications, ensuring ease of retrieval and comparison by team members.  
+-  Maintaining meticulous version control using Git emerged as a critical consideration. Given the low tolerance for errors within the company's front-end business operations, each commit needs to be clear and well-defined task modifications, ensuring ease of retrieval and comparison by team members.  
 
 ## Reflection    
 My internship was an incredibly immersive experience, particularly in the demanding front-end operations of the company. The high standards for programming logic and code style pushed me to refine my work style. Initially, I focused on efficiency and delivering results, but I soon learned to prioritize caution and attention to detail. Throughout the four-month internship, my Python programming skills underwent significant growth. Python evolved from a mere data manipulation tool to a language in which I actively consider how to make my code as readable and efficient as my dashboards. Overall, this Wall Street journey has been unforgettable and has enriched my professional development in numerous ways.
